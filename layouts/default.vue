@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="container relative min-h-screen pt-16">
     <Nuxt />
   </main>
 </template>
