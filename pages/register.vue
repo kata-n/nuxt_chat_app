@@ -38,3 +38,16 @@
     </form>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      from: {
+        imageUrl: {
+          val: null
+        }
+      }
+    }
+  }
+}
+</script>
