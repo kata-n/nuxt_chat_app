@@ -15,6 +15,26 @@
           />
         </div>
       </div>
+      <label
+        class="block mt-8 mb-2 ml-2 uppercase tracking-wide text-darkGray text-s"
+      >
+        名前
+      </label>
+      <div class="h-20 mb-6">
+        <input
+          type="text"
+          class="block w-full py-3 px-4 appearance-none bg-gray-200 text-darkGray border rounded leading-tight focus:outline-none focus:bg-white"
+        />
+      </div>
+
+      <div class="flex">
+        <button
+          class="w-full p-3 gradation rounded-full text-white
+        "
+        >
+          登録
+        </button>
+      </div>
     </form>
   </div>
 </template>
