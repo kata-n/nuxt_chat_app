@@ -55,7 +55,10 @@ export default {
       this.$refs.image.click()
     },
     onSelectFile(e){
+      const files = e.tartget.files
+      if(files.length === 0) return
 
+      const reader = new FileReader()
     }
   }
 }
