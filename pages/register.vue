@@ -4,9 +4,18 @@
     <form>
       <div class="text-2xl text-center text-darkGray">
         <div class="flex items-center justify-center w-32 h-32 bg-gray-200 rounded-full border border-gray-400">
-          <i class="material-icons text-7xl text-gray" @click="selectImage">
-            person
-          </i>
+          <template v-if="form.imageUrl.val">
+            <img
+              :src="form.imageUrl.val"
+              class="w-32 h-32 object-cover border rounded-full"
+              @click = "selectImage"
+              />
+          </template>
+          <template v-else>
+            <i class="material-icons text-7xl text-gray" @click="selectImage">
+              person
+            </i>
+          </template>
           <input
             ref="image"
             type="file"
