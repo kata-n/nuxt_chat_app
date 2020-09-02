@@ -32,6 +32,7 @@
       </label>
       <div class="h-20 mb-6">
         <input
+        　v-model = "form.name.val"
           type="text"
           class="block w-full py-3 px-4 appearance-none bg-gray-200 text-darkGray border rounded leading-tight focus:outline-none focus:bg-white"
         />
@@ -53,8 +54,15 @@ export default {
   data() {
     return {
       from: {
-        imageUrl: {
+        name: {
+          label: '名前',
           val: null
+          errorMessage: null
+        },
+        imageUrl: {
+          label: 'アイコン画像',
+          val: null,
+          errorMessage: null
         }
       }
     }
