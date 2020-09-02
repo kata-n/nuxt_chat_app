@@ -59,6 +59,31 @@ export default {
       if(files.length === 0) return
 
       const reader = new FileReader()
+      reader.readAsDataURL(files[0])
+
+      reader.addEventListemdner('load',()=> {
+        this.upload({
+          locallmageFile: file[0]
+        })
+      })
+    },
+    async upload({ localImageFile }) {
+      const user = await this.$auth()
+
+      //未ログインの場合
+      if(!user)this.$router.push('/login')
+
+      //ストレージオブジェクトを作成
+      const storageRef = this.$fireStorage.ref()
+
+      //ファイルのパスを設定
+      const imageRef = storageRef.child(
+        `images/${user.uid}/${localImageFile.name}`
+      )
+
+      //ファイルを適用してファイルアップロード開始
+      const snapShot = await imageRef.put(localImageFile)
+      this.form.imageUrl.val = await snapShot.ref.getDownloadURL()
     }
   }
 }
