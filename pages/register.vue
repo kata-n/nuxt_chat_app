@@ -1,7 +1,7 @@
 <template>
   <div class="m-4 p-4 bg-white shadow rounded">
     <h2 class="text-2xl text-center text-darkGray">アカウント登録</h2>
-    <form>
+    <form @submit.prevnet="onSubmit">
       <div
         class="text-2xl text-center text-darkGray"
         :class="{ 'border-red-500': form.imageUrl.errorMessage }"
@@ -35,10 +35,11 @@
       </label>
       <div class="h-20 mb-6">
         <input
-        　v-model = "form.name.val"
+        　v-model= "form.name.val"
           type="text"
           class="block w-full py-3 px-4 appearance-none bg-gray-200 text-darkGray border rounded leading-tight focus:outline-none focus:bg-white"
           :class="{ 'border-red-500': form.name.errorMessage }"
+          @blur="validateName"
         />
         <span v-show="form.name.errorMessage" class="text-red text-sm">
           {{ form.name.errorMessage }}
@@ -108,6 +109,8 @@ export default {
       //ファイルを適用してファイルアップロード開始
       const snapShot = await imageRef.put(localImageFile)
       this.form.imageUrl.val = await snapShot.ref.getDownloadURL()
+
+      this.validateImageUrl()
     },
     validateName() {
       const { name } = this.form
@@ -133,6 +136,10 @@ export default {
       }
       //バリデーション
       imageUrl.errorMessage = null
+    },
+    onSubmit() {
+      this.validateName()
+      this.validateImageUrl()
     }
   }
 }
