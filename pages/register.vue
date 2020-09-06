@@ -1,12 +1,12 @@
 <template>
   <div class="m-4 p-4 bg-white shadow rounded">
     <h2 class="text-2xl text-center text-darkGray">アカウント登録</h2>
-    <form @submit.prevnet="onSubmit">
-      <div
-        class="text-2xl text-center text-darkGray"
-        :class="{ 'border-red-500': form.imageUrl.errorMessage }"
-      >
-        <div class="flex items-center justify-center w-32 h-32 bg-gray-200 rounded-full border border-gray-400">
+    <form @submit.prevent="onSubmit">
+      <div class="text-2xl text-center text-darkGray">
+        <div
+          class="flex items-center justify-center w-32 h-32 bg-gray-200 rounded-full border border-gray-400"
+          :class="{ 'border-red-500': form.imageUrl.errorMessage }"
+        >
           <template v-if="form.imageUrl.val">
             <img
               :src="form.imageUrl.val"
@@ -27,6 +27,9 @@
             @change="onSelectFile"
           />
         </div>
+        <span v-show="form.imageUrl.errorMessage" class="text-red text-sm">
+          {{ form.imageUrl.errorMessage }}
+        </span>
       </div>
       <label
         class="block mt-8 mb-2 ml-2 uppercase tracking-wide text-darkGray text-s"
@@ -48,8 +51,7 @@
 
       <div class="flex">
         <button
-          class="w-full p-3 gradation rounded-full text-white
-        "
+          class="w-full p-3 gradation rounded-full text-white"
         >
           登録
         </button>
@@ -61,10 +63,10 @@
 export default {
   data() {
     return {
-      from: {
+      form: {
         name: {
           label: '名前',
-          val: null
+          val: null,
           errorMessage: null
         },
         imageUrl: {
@@ -102,6 +104,7 @@ export default {
       const storageRef = this.$fireStorage.ref()
 
       //ファイルのパスを設定
+      const fileName = `${localImageFile.name}_${uuid()}`
       const imageRef = storageRef.child(
         `images/${user.uid}/${localImageFile.name}`
       )
