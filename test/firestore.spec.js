@@ -63,6 +63,35 @@ describe(testName, () => {
         )
       })
 
+      test('ユーザ名が未入力の場合は作成に失敗するか', async () => {
+        const db = authDB({ uid: 'tech-user' })
+        await firebase.assertFails(
+          db.collection('users').doc('tech-user').set({
+            name: '',
+            iconImageUrl: 'https://example.com',
+          })
+        )
+      })
+
+      test('アイコン画像が未入力の場合、失敗するか', async () => {
+        const db = authDB({ uid: 'tech-user' })
+        await firebase.assertFails(
+          db.collection('users').doc('tech-user').set({
+            name: 'testUser',
+            iconImageUrl: '',
+          })
+        )
+      })
+
+      test('他人のアカウントのデータ作成、失敗するか', () => {
+        const db = authDB({ uid: 'tech-user' })
+        firebase.assertFails(
+          db.collection('users').doc('tech-user2').set({
+            name: 'testUser',
+            iconImageUrl: 'https://example.com',
+          })
+        )
+      })
 
     })
   })
