@@ -34,4 +34,36 @@ describe(testName, () => {
       .initializeTestApp({ projectId: testName, auth: null })
       .firestore()
   }
+
+  describe('users collection', () => {
+    describe('read', () => {
+
+      test('未ログインの場合、データ取得に失敗するかどうか', async () => {
+        const db = noAuthDB()
+        await firebase.assertFails(db.collection('users').doc('tech-user').get())
+      })
+
+      test('ログイン済みの場合は、ユーザーデータを取得', async () => {
+        const db = authDB({ uid: 'tech-user' })
+        await firebase.assertSucceeds
+          (
+            db.collection('users').doc('tech-user').get()
+          )
+      })
+    })
+
+    describe('create', () => {
+      test('自分のアカウントデータを作成できるか', async () => {
+        const db = authDB({ uid: 'tech-user' })
+        await firebase.assertSucceeds(
+          db.collection('users').doc('tech-user').set({
+            name: 'testUser',
+            iconImageUrl: 'https://example.com',
+          })
+        )
+      })
+
+
+    })
+  })
 })
