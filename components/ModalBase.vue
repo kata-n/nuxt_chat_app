@@ -11,5 +11,9 @@
     </div>
   </teansition>
 </template>
-<style>
+<style scoped>
+.v-leave-active,
+.v-enter-active {
+  transition: opacity 0.4s ease-out;
+}
 </style>
