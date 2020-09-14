@@ -6,6 +6,21 @@
           :class="{ 'border border-red-500': form.imageUrl.errorMessage }"
           class="rounded-lg w-32 h-32 bg-gray-200 flex items-center justify-center"
         >
+          <template v-if="form.imageUrl.val">
+            <img :src="form.imageUrl.val"  @click="selectImage" class="w-32 h-32 object-cover border rounded-lg" alt="">
+          </template>
+          <template v-else>
+            <i @click="selectImage" class="material-icons text-6xl text-gray">
+              add_photo_alternate
+            </i>
+          </template>
+          <input
+            ref="image"
+            @change="onFileSelect"
+            type="file"
+            style="display: none"
+            accept="image/*"
+           />
         </div>
       </div>
     </form>
