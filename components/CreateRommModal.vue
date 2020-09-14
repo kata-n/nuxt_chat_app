@@ -29,6 +29,19 @@
           {{ form.imageUrl.errorMessage }}
         </span>
       </div>
+      <div class="h-20 mb-4 mt-10">
+        <textarea
+          v-model="form.name.val"
+          @blur="validateName"
+          :class="{'border-red-500': form.name.errorMessage}"
+          placeholder="部屋の名前を入力しよう"
+          class="appearance-none block w-full bg-gray-200 text-darkGray border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+          maxlength="maxlength"
+        />
+        <span v-show="form.name.errorMessage" class="text-red text-sm">
+          {{ form.name.errorMessage }}
+        </span>
+      </div>
     </form>
   </div>
 </template>
