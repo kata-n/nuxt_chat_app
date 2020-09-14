@@ -22,6 +22,12 @@
             accept="image/*"
            />
         </div>
+        <span
+          v-show="form.imageUrl.errorMessage"
+          class="text-red text-sm text-center"
+        >
+          {{ form.imageUrl.errorMessage }}
+        </span>
       </div>
     </form>
   </div>
