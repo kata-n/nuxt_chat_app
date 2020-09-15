@@ -42,6 +42,11 @@
           {{ form.name.errorMessage }}
         </span>
       </div>
+      <div class="flex">
+        <button　class="gradation rounded-full p-3 text-white w-full">
+          作成
+        </button>
+      </div>
     </form>
   </div>
 </template>
