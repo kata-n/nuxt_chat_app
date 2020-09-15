@@ -50,3 +50,25 @@
     </form>
   </div>
 </template>
+<script>
+import { mapMutations } from 'vuex'
+
+export default {
+  data() {
+    return {
+      form: {
+        name: {
+          label: '名前',
+          val: null,
+          errorMessage: null
+        },
+        imageUrl: {
+          label: '画像',
+          val: null,
+          errorMessage: null
+        }
+      }
+    }
+  }
+}
+</script>
