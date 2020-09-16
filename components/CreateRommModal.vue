@@ -79,5 +79,26 @@ export default {
       return 35
     }
   },
+  methods: {
+     ...mapMutations('alert', ['setMessage']),
+
+     selectImage() {
+       this.$refs.image.click()
+     },
+
+     onFileSelect(e) {
+       const files = e.target.files
+       if(files.length === 0) return
+
+       const reader = new FIleReader()
+       reader.readAsDataURL(files[0])
+
+       reader.addEventListener('load',() =>{
+         this.upload({
+           locallmageFile: files[0]
+         })
+       })
+     },
+  }
 }
 </script>
