@@ -69,6 +69,15 @@ export default {
         }
       }
     }
-  }
+  },
+
+  computed: {
+    isValidateError() {
+      return this.form.name.errorMessage || this.form.imageUrl.errorMessage
+    },
+    maxlength() {
+      return 35
+    }
+  },
 }
 </script>
