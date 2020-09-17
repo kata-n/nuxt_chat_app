@@ -106,7 +106,37 @@ export default {
 
        //未ログインの場合
        if(!users)this.$router.push('/login')
-     }
+
+       //ストレージオブジェクト作成
+       const storageRef =this.$fireStorage.ref()
+
+       //ファイルのパスを指定
+       const imageRef = storageRef.child(
+         `images/${user.uid}/rooms/${localimageFile.name}`
+       )
+
+       //ファイルを適用してファイルアップロード開始
+       const snapShot = await imageRef.put(localImageFile)
+       this.form.imageUrl.val = await snapShot.ref.getDownloadURL()
+
+       this.validateimageUrl()
+     },
+
+     validateName() {
+       const { name } = this.form
+
+       if(!name.val) {
+         name.errorMessage = `${name.label}は必須入力です`
+         return
+       }
+
+       if(name.val.length > this.maxlength) {
+         name.errorMessage = `${name.label}は${this.maxlength}文字以内です。`
+         return
+       }
+
+       name.errorMessage = null
+     },
   }
 }
 </script>
