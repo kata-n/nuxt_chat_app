@@ -99,6 +99,14 @@ export default {
          })
        })
      },
+
+     //画像アップロード処理
+     async upload({ localImageFile }) {
+       const user = await this.$auth()
+
+       //未ログインの場合
+       if(!users)this.$router.push('/login')
+     }
   }
 }
 </script>
