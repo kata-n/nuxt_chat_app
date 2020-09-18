@@ -164,6 +164,13 @@ export default {
          topimageUrl: this.form.imageUrl.val,
          createAt: this.$firebase.firestore.FieldValue.serverTimestamp()
        }
+
+       try {
+         await this.$firestore.collection('rooms').add(params)
+         this.$emit('closeModal')
+       } carch(e){
+         this.setMessage({ message: '登録に失敗しました'　})
+       }
      }
   }
 }
