@@ -137,6 +137,34 @@ export default {
 
        name.errorMessage = null
      },
+
+     validateimageUrl() {
+       const { imageUrl } = this.form
+
+       if(!imageUrl.val) {
+         imageUrl.errorMessage = `${imageUrl.label}は必須入力項目です`
+         return
+       }
+       imageUrl.errorMessage = null
+     },
+
+     async onSubmit() {
+       //認証チェック
+       const user = this.$auth.currentUser
+       if(!user)this.$router.push('/login')
+
+       //入力値チェック
+       this.validateName()
+       this.validateimageUrl()
+       if(this.isValidateError)return
+
+       //登録データを準備
+       const params = {
+         name: this.form.name.val,
+         topimageUrl: this.form.imageUrl.val,
+         createAt: this.$firebase.firestore.FieldValue.serverTimestamp()
+       }
+     }
   }
 }
 </script>
