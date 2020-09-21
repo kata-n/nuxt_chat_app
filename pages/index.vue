@@ -17,6 +17,24 @@ import ModalBase from '~/components/ModalBase'
 import CreateRoomModal from '~/components/CreateRoomModal'
 
 export default {
+  components: {
+    ModalBase,
+    CreateRoomModal
+  },
 
+  data() {
+    return {
+      isCreateMode: false
+    }
+  },
+
+  methods: {
+    openModal() {
+      this.isCreateMode = true
+    }
+  },
+    closeModal() {
+      this.isCreateMode = false
+    }
 }
 </script>
