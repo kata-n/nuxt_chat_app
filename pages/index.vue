@@ -7,5 +7,16 @@
         </i>
       </button>
     </div>
+    <ModalBase v-if="isCreateMode" @closeModal="closeModal">
+      <CreateRommModal @closeModal="closeModal" />
+    </ModalBase>
   </div>
 </template>
+<script>
+import ModalBase from '~/components/ModalBase'
+import CreateRoomModal from '~/components/CreateRoomModal'
+
+export default {
+
+}
+</script>
