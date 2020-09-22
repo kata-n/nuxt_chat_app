@@ -38,3 +38,9 @@ export default {
     }
 }
 </script>
+<style scoped>
+  .create-btn {
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
