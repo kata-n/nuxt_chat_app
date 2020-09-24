@@ -48,8 +48,21 @@ export const actions = {
           switch (snapshot.type) {
             case 'added':
               commit('add', { room })
+              break
+
+            case 'modified':
+              commit('update', { room })
+              break
+
+            case 'removed':
+              commit('remove', { room })
+              break
           }
         })
       })
+  },
+
+  clear({ commit }) {
+    commit('clear')
   }
 }
