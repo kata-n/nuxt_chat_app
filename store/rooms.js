@@ -32,3 +32,24 @@ export const mutations = {
     state.rooms = []
   }
 }
+
+export const actions = {
+  subscribe({ commit }) {
+    return this.$firestore
+      .collection('rooms')
+      .orderBy('createdAt', 'asc')
+      .onSnapsShot((roomsSnapShot) => {
+        roomsSnapShot.docChanges().forEach((snapshot) => {
+          const room = {
+            id: snapshot.doc.id,
+            ...snapshot.doc.data()
+          }
+
+          switch (snapshot.type) {
+            case 'added':
+              commit('add', { room })
+          }
+        })
+      })
+  }
+}
