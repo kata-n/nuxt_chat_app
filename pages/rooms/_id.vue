@@ -9,8 +9,13 @@
        v-model="form.message.val"
        placeholder="発言してみよう"
        class="block appearance-none w-full ml-2 py-3 px-4 rounded-lg border border-gray-400 text-darkGray focus:outline-none focus:bg-white overflow-hidden bg-blue-100"
+       name="form.body"
+     />
+     <button
+      :disable="isValidateError"
+      :class="{ 'text-blue': !isValidateError }"
      >
-     </textarea>
+     </button>
     </form>
   </div>
 </template>
