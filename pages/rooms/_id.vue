@@ -14,8 +14,20 @@
      <button
       :disable="isValidateError"
       :class="{ 'text-blue': !isValidateError }"
+      class="w-2/12 flex items-start justify-center text-gray font-semibold"
      >
+     送信
      </button>
     </form>
   </div>
 </template>
+<script>
+export default {
+  middleware:['checkAuth'],
+  data(){
+    return {
+
+    }
+  }
+}
+</script>
