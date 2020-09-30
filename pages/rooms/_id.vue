@@ -26,7 +26,11 @@ export default {
   middleware:['checkAuth'],
   data(){
     return {
-
+      form: {
+        message: {
+          val: null
+        }
+      }
     }
   }
 }
