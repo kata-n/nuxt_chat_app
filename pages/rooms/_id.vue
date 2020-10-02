@@ -32,6 +32,12 @@ export default {
         }
       }
     }
+  },
+
+  computed: {
+    isValidateError() {
+      return !this.form.message.val
+    }
   }
 }
 </script>
