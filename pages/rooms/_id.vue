@@ -58,6 +58,11 @@ export default {
         body: this.$firebase.firestore.FieldValue.serverTimestamp()
       }
 
+      try {
+
+      }catch(e){
+
+      }
     }
   }
 }
