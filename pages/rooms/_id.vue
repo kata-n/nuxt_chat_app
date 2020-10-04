@@ -38,6 +38,18 @@ export default {
     isValidateError() {
       return !this.form.message.val
     }
+  },
+
+  methods: {
+    async onSubmit() {
+      if(this.isValidateError) return
+
+      const user = await this.$user()
+
+      //未ログインの場合
+      if(!user)this.$rounter.push('/login')
+      const roomid = this.$rounte.params.id
+    }
   }
 }
 </script>
