@@ -49,6 +49,15 @@ export default {
       //未ログインの場合
       if(!user)this.$rounter.push('/login')
       const roomid = this.$rounte.params.id
+
+      //登録データを準備
+      const chat = {
+        userid: suer.uid,
+        name: user.name,
+        iconImageUrl: user.iconImageUrl,
+        body: this.$firebase.firestore.FieldValue.serverTimestamp()
+      }
+
     }
   }
 }
