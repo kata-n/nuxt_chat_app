@@ -59,7 +59,8 @@ export default {
       }
 
       try {
-
+        await this.$firestore
+          .collection('rooms')
       }catch(e){
 
       }
