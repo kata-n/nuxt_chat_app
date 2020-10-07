@@ -61,10 +61,15 @@ export default {
       try {
         await this.$firestore
           .collection('rooms')
+          .doc(roomid)
+          .collection('chats')
+          .add(chat)
+          this.reseteForm()
+          this.scrollBottom()
       }catch(e){
-
+          this.setMessage({message:'登録に失敗しました})
       }
-    }
+    },
   }
 }
 </script>
