@@ -70,6 +70,10 @@ export default {
           this.setMessage({message:'登録に失敗しました})
       }
     },
+
+    scrollBottom(){
+      const element = document.documentElement
+    }
   }
 }
 </script>
