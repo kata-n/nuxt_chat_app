@@ -4,6 +4,7 @@
       <div
         v-for="room in rooms"
         :key="room.id"
+        @click="moveToRoompage(room.id)"
         class="bg-white max-w-sm rounded-lg overflow-hidden shadow m-4 mb-5 p-4 h-32"
       >
         <div>
@@ -59,8 +60,8 @@ export default {
 }
 </script>
 <style scoped>
-  .create-btn {
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+.create-btn {
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 </style>
