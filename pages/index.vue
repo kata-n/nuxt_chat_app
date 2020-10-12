@@ -46,6 +46,9 @@ export default {
   },
 
   methods: {
+    moveToRoomPage(roomId){
+      this.$router.push('/rooms/${roomId}')
+    },
     openModal() {
       this.isCreateMode = true
     }、
