@@ -13,3 +13,12 @@
     </template>
   </header>
 </template>
+<script>
+  export default {
+    computed: {
+      isChatPage() {
+        return this.$route.psth.match(/\/rooms\/[A-Za-z0-9]*/)
+      }
+    }
+  }
+</script>
