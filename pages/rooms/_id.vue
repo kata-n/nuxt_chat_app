@@ -74,6 +74,7 @@ export default {
     scrollBottom(){
       const element = document.documentElement
       const bottom = element.scrollHeight - elemant.clientHeight
+      const blooom = document.documentElement
       window.scroll(0, bottom)
     },
 
