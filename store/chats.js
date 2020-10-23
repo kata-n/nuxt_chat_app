@@ -14,5 +14,18 @@ export const mutations = {
     if (isEmpty || isNotAdded) {
       state.chats.push(chat)
     }
+  },
+
+  update(state, { chat }) {
+    state.chats = state.chats.map((c) => {
+      if (c.id === chat.id) {
+        c = chat
+      }
+      return c
+    })
+  },
+
+  remove(state, { chat }) {
+    state.chats = state.chats.filter((c) => c.id !== chat.id)
   }
 }
