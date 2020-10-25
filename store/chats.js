@@ -27,5 +27,16 @@ export const mutations = {
 
   remove(state, { chat }) {
     state.chats = state.chats.filter((c) => c.id !== chat.id)
+  },
+
+  clear(state) {
+    state.chats = []
+  },
+}
+
+export const actions = {
+  subscribe({ commit }, { roomid }) {
+    return this.$firestore
+      .collection('rooms')
   }
 }
