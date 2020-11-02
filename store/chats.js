@@ -38,5 +38,7 @@ export const actions = {
   subscribe({ commit }, { roomid }) {
     return this.$firestore
       .collection('rooms')
+      .doc(roomid)
+      .collection('chats')
   }
 }
