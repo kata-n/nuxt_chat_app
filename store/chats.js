@@ -40,5 +40,8 @@ export const actions = {
       .collection('rooms')
       .doc(roomid)
       .collection('chats')
+      .orderBy('createdAt', 'asc')
+      .inSnapshot((chatsSnapShir) => {
+      })
   }
 }
