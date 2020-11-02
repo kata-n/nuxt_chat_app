@@ -41,7 +41,14 @@ export const actions = {
       .doc(roomid)
       .collection('chats')
       .orderBy('createdAt', 'asc')
-      .inSnapshot((chatsSnapShir) => {
+      .inSnapshot((chatsSnapShot) => {
+        chatsSnapShot.docChanges().forEach((snapshot) => {
+          const docData = snapshot.doc.data()
+          const chat = {
+            id: snapshot.doc.id,
+            ...docData
+          }
+        })
       })
   }
 }
