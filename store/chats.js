@@ -48,6 +48,18 @@ export const actions = {
             id: snapshot.doc.id,
             ...docData
           }
+
+          switch (snapshot.type) {
+            case 'added':
+              commit('add',{ chat })
+              break;
+            case 'moodified':
+              commit('update', { chat })
+              break;
+            case 'removed':
+              commit('remove', { chat })
+              break;
+          }
         })
       })
   }
