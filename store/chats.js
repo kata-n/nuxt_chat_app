@@ -62,5 +62,9 @@ export const actions = {
           }
         })
       })
+  },
+
+  clear({ commit }) {
+    commit('clear')
   }
 }
