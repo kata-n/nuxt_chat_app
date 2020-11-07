@@ -30,7 +30,8 @@ export default {
         message: {
           val: null
         }
-      }
+      },
+      unsubscribe: null
     }
   },
 
@@ -38,6 +39,10 @@ export default {
     isValidateError() {
       return !this.form.message.val
     }
+  },
+
+  async asyncData({ store, params }) {
+    const roomId = paramis.id
   },
 
   methods: {
@@ -56,7 +61,7 @@ export default {
         name: user.name,
         iconImageUrl: user.iconImageUrl,
         body: this.$firebase.firestore.FieldValue.serverTimestamp()
-      }
+      },
 
       try {
         await this.$firestore
@@ -68,7 +73,7 @@ export default {
           this.scrollBottom()
       }catch(e){
           this.setMessage({message:'登録に失敗しました})
-      }
+      },
     },
 
     scrollBottom(){
